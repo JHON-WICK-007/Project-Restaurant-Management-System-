@@ -1,0 +1,80 @@
+ /* Navbar main container */
+.navbar {
+  width: 100%;
+  background-color: #1c1c1c;
+  padding: 12px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Inner container */
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo */
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffb703;
+  text-decoration: none;
+}
+
+.logo:hover {
+  color: #ffd166;
+}
+
+/* Navigation links */
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+/* Individual links */
+.nav-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+/* Hover effect */
+.nav-links a:hover {
+  color: #ffb703;
+}
+
+/* Underline animation */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0%;
+  height: 2px;
+  background-color: #ffb703;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav-links {
+    gap: 15px;
+  }
+}
