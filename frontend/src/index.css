@@ -1,41 +1,58 @@
-/* ===============================
-   LUXURY ROYAL THEME – GLOBAL
-================================ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --bg-dark: #0e0e11;
-  --bg-card: #16161c;
-  --gold: #c9a24d;
-  --gold-soft: #e6c87a;
-  --text-light: #f5f5f5;
-  --text-muted: #b5b5b5;
-  --border-soft: rgba(201, 162, 77, 0.25);
+@layer base {
+  body {
+    @apply bg-black text-white antialiased;
+    font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+  }
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@layer utilities {
+  .perspective-1200 {
+    perspective: 1200px;
+  }
+  
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  
+  .bg-gradient-radial {
+    background: radial-gradient(circle at center, theme('colors.gray.900'), theme('colors.black'));
+  }
 }
 
-body {
-  background: radial-gradient(circle at top, #1a1a22, #0b0b0f);
-  color: var(--text-light);
-  font-family: "Poppins", system-ui, sans-serif;
-  line-height: 1.6;
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
 }
 
-/* Smooth look */
+::-webkit-scrollbar-track {
+  background: #0b0b0b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4af37;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b8962e;
+}
+
+/* Smooth Scroll */
 html {
   scroll-behavior: smooth;
 }
 
-/* Links */
-a {
-  color: var(--gold);
-  text-decoration: none;
-}
-
-a:hover {
-  color: var(--gold-soft);
+/* Image Loading */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }

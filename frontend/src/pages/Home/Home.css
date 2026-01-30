@@ -1,235 +1,266 @@
 /* ===============================
-   ROOT VARIABLES (SAFE DEFAULTS)
+   HOME PAGE SPECIFIC STYLES
 ================================ */
-:root {
-  --gold: #e6c87a;
-  --gold-dark: #c9a24d;
-  --text-muted: #cfcfcf;
-  --bg-dark: #0f0f0f;
+
+/* Loading Spinner */
+.loading-spinner {
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top-color: #eab308;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 0.8s linear infinite;
 }
 
-/* ===============================
-   HERO – LUXURY SECTION
-================================ */
-.hero {
-  min-height: 90vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 0 20px;
-  position: relative;
-  overflow: hidden;
-
-  /* Optional background image */
-  background:
-    linear-gradient(rgba(15, 15, 15, 0.75), rgba(15, 15, 15, 0.75)),
-    url("https://images.unsplash.com/photo-1414235077428-338989a2e8c0");
-  background-size: cover;
-  background-position: center;
-}
-
-/* Soft golden glow */
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: -50%;
-  background: radial-gradient(
-    circle,
-    rgba(230, 200, 122, 0.15) 0%,
-    transparent 70%
-  );
-  animation: glow 8s ease-in-out infinite;
-  pointer-events: none;
-}
-
-@keyframes glow {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 0.3;
-  }
-  50% {
-    transform: scale(1.1);
-    opacity: 0.5;
-  }
-}
-
-/* Content */
-.hero-content {
-  position: relative;
-  z-index: 1;
-  animation: fadeInUp 1s ease-out;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
+@keyframes spin {
   to {
-    opacity: 1;
-    transform: translateY(0);
+    transform: rotate(360deg);
   }
 }
 
-/* Title */
-.hero-title {
-  font-family: "Playfair Display", serif;
-  font-size: 3.5rem;
-  margin-bottom: 16px;
-  letter-spacing: 1.5px;
+/* Performance Optimizations */
+.hero-section,
+.branches-section,
+.dishes-section {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
 
+/* Video Container Optimization */
+video {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Image Loading Optimization */
+img {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 400px;
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  /* Reduce padding on mobile */
+  section {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+
+  /* Optimize grid gaps */
+  .grid {
+    gap: 1rem !important;
+  }
+
+  /* Smaller text on mobile */
+  h1 {
+    font-size: 2rem !important;
+  }
+
+  h2 {
+    font-size: 1.875rem !important;
+  }
+}
+
+/* Tablet Optimizations */
+@media (min-width: 769px) and (max-width: 1024px) {
+  section {
+    padding-top: 4rem !important;
+    padding-bottom: 4rem !important;
+  }
+}
+
+/* GPU Acceleration for Animations */
+.animate-on-scroll {
+  transform: translateZ(0);
+  will-change: transform, opacity;
+}
+
+/* Backdrop Blur Performance */
+.backdrop-blur-lg {
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+}
+
+/* Card Hover Effects */
+.card-hover-effect {
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+.card-hover-effect:hover {
+  transform: translateY(-8px);
+}
+
+/* Gradient Overlays */
+.gradient-overlay {
   background: linear-gradient(
-    135deg,
-    var(--gold),
-    var(--gold-dark),
-    var(--gold)
+    to bottom,
+    rgba(0, 0, 0, 0.6),
+    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0.9)
   );
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+}
 
-  animation: shimmer 3s ease-in-out infinite;
+/* Button Hover Effects */
+.btn-primary {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.btn-secondary {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-secondary:hover {
+  transform: scale(1.05);
+}
+
+/* Text Shadow for Readability */
+.text-shadow {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Link Styles */
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Focus Styles for Accessibility */
+*:focus-visible {
+  outline: 2px solid #eab308;
+  outline-offset: 2px;
+}
+
+/* Prevent Layout Shift */
+.min-h-screen {
+  min-height: 100vh;
+  min-height: 100dvh; /* Modern browsers */
+}
+
+/* Content Visibility for Performance */
+section {
+  content-visibility: auto;
+}
+
+/* Lazy Loading Placeholder */
+.lazy-placeholder {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.05) 25%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.05) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
 }
 
 @keyframes shimmer {
-  0%, 100% {
-    background-position: 0% center;
+  0% {
+    background-position: -200% 0;
   }
-  50% {
-    background-position: 100% center;
+  100% {
+    background-position: 200% 0;
   }
 }
 
-/* Description */
-.hero-description {
-  max-width: 620px;
-  font-size: 1.1rem;
-  color: var(--text-muted);
-  margin-bottom: 36px;
-  line-height: 1.6;
-}
-
-/* ===============================
-   BUTTON – GOLD LUXURY
-================================ */
-.btn {
-  padding: 14px 36px;
-  font-size: 0.95rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  font-weight: 600;
-
-  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-  color: #1a1a1a;
-  border-radius: 30px;
-  text-decoration: none;
-  display: inline-block;
-
-  box-shadow: 0 12px 30px rgba(201, 162, 77, 0.35);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.btn::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    circle at center,
-    rgba(255, 255, 255, 0.35),
-    transparent 70%
-  );
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.btn:hover::before {
-  opacity: 1;
-}
-
-.btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 18px 45px rgba(201, 162, 77, 0.5);
-}
-
-/* ===============================
-   FEATURES SECTION
-================================ */
-.features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-  padding: 80px 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-/* Feature Card */
-.feature-card {
-  background: linear-gradient(
-    135deg,
-    rgba(26, 26, 26, 0.75),
-    rgba(40, 40, 40, 0.6)
-  );
-  border: 1px solid rgba(230, 200, 122, 0.25);
-  border-radius: 16px;
-  padding: 40px 30px;
-  text-align: center;
-  backdrop-filter: blur(10px);
-  transition: all 0.4s ease;
-}
-
-.feature-card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(230, 200, 122, 0.5);
-  box-shadow: 0 22px 45px rgba(201, 162, 77, 0.25);
-}
-
-/* Icons */
-.feature-icon {
-  font-size: 3rem;
-  margin-bottom: 20px;
-  transition: transform 0.3s ease;
-}
-
-.feature-card:hover .feature-icon {
-  transform: scale(1.1) rotate(5deg);
-}
-
-/* Text */
-.feature-card h3 {
-  font-family: "Playfair Display", serif;
-  font-size: 1.5rem;
-  color: var(--gold);
-  margin-bottom: 12px;
-}
-
-.feature-card p {
-  font-size: 0.95rem;
-  color: var(--text-muted);
-  line-height: 1.6;
-}
-
-/* ===============================
-   RESPONSIVE
-================================ */
-@media (max-width: 768px) {
-  .hero-title {
-    font-size: 2.4rem;
+/* Print Styles */
+@media print {
+  video,
+  .no-print {
+    display: none !important;
   }
-
-  .hero-description {
-    font-size: 1rem;
+  
+  section {
+    page-break-inside: avoid;
   }
+}
 
-  .features {
-    padding: 60px 20px;
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .backdrop-blur-lg {
+    background: rgba(0, 0, 0, 0.9) !important;
   }
+  
+  .border-white\/10 {
+    border-color: rgba(255, 255, 255, 0.3) !important;
+  }
+}
 
-  .feature-card {
-    padding: 30px 22px;
+/* Dark Mode Support (already dark) */
+@media (prefers-color-scheme: dark) {
+  /* Optimizations for OLED screens */
+  .bg-black {
+    background: #000000;
   }
+}
+
+/* Responsive Typography */
+@media (max-width: 640px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 1025px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+/* Safe Area Insets for Mobile Devices */
+@supports (padding: max(0px)) {
+  .safe-area-padding {
+    padding-left: max(1.5rem, env(safe-area-inset-left));
+    padding-right: max(1.5rem, env(safe-area-inset-right));
+  }
+}
+
+/* Prevent Text Selection on UI Elements */
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Custom Scrollbar for Webkit Browsers */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #eab308;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f59e0b;
 }
